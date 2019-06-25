@@ -1,0 +1,28 @@
+{
+  "name": "webpack-sample",
+  "version": "1.0.0",
+  "description": "Learning webpack step by step.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airen/webpack-sample.git"
+  },
+  "keywords": [
+    "webpack",
+    "react",
+    "typescript",
+    "es6",
+    "postcss",
+    "css",
+    "moudles"
+  ],
+  "author": "Airen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/airen/webpack-sample/issues"
+  },
+  "homepage": "https://github.com/airen/webpack-sample#readme"
+}
