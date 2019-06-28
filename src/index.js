@@ -6,5 +6,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     h1Ele.innerText = 'Hello Webpack (^_^)'
 
-    h1Ele.style.color = '#f46';
+    h1Ele.style.color = '#fa3';
 })
