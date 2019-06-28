@@ -2,8 +2,10 @@
   "name": "webpack-sample",
   "version": "1.0.0",
   "description": "Learning webpack step by step.",
-  "private":true,
+  "private": true,
   "scripts": {
+    "build": "webpack --config ./build/webpack.config.js --mode production",
+    "dev": "webpack-dev-server --config ./build/webpack.config.js --mode development --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,5 +29,10 @@
   "homepage": "https://github.com/airen/webpack-sample#readme",
   "dependencies": {
     "node-sass": "^4.12.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
   }
 }
