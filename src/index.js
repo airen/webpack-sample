@@ -1,10 +1,6 @@
+import React, {Component} from 'react';
+import { render } from 'react-dom';
 
-document.addEventListener('DOMContentLoaded', () => {
-    const h1Ele = document.createElement('h1')
+import App from './components/App'
 
-    document.body.append(h1Ele);
-
-    h1Ele.innerText = 'Hello Webpack (^_^)'
-
-    h1Ele.style.color = '#fa3';
-})
+render(<App />, document.getElementById('root'))
