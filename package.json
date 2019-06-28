@@ -2,7 +2,7 @@
   "name": "webpack-sample",
   "version": "1.0.0",
   "description": "Learning webpack step by step.",
-  "main": "index.js",
+  "private":true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/airen/webpack-sample/issues"
   },
-  "homepage": "https://github.com/airen/webpack-sample#readme"
+  "homepage": "https://github.com/airen/webpack-sample#readme",
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  }
 }
