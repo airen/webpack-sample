@@ -51,12 +51,22 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader: "style-loader"
+                        loader: "style-loader",
+                        options: {
+                            "sourceMap": true
+                        }
                     },
                     {
                         loader: "css-loader",
                         options: {
-                            importLoaders: 1
+                            importLoaders: 1,
+                            "sourceMap": true
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            "sourceMap": true
                         }
                     }
                 ]
