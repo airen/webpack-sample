@@ -53,26 +53,26 @@ module.exports = {
                     {
                         loader: "style-loader",
                         options: {
-                            "sourceMap": true
+                            sourceMap: true
                         }
                     },
                     {
                         loader: "css-loader",
                         options: {
                             importLoaders: 1,
-                            "sourceMap": true
+                            sourceMap: true
                         }
                     },
                     {
                         loader: "postcss-loader",
                         options: {
-                            "sourceMap": true
+                            sourceMap: true
                         }
                     },
                     {
                         loader: "sass-loader",
                         options: {
-                            "sourceMap": true
+                            sourceMap: true
                         }
                     }
                 ]
