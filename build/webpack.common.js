@@ -43,6 +43,23 @@ module.exports = {
                         loader: "awesome-typescript-loader"
                     }
                 ]
+            },
+
+            // CSS Loader
+            {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "style-loader"
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1
+                        }
+                    }
+                ]
             }
         ]
     },
