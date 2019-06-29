@@ -47,7 +47,7 @@ module.exports = {
 
             // CSS Loader
             {
-                test: /\.css$/,
+                test: /\.(sc|sa|c)ss$/,
                 exclude: /node_modules/,
                 use: [
                     {
@@ -64,7 +64,13 @@ module.exports = {
                         }
                     },
                     {
-                        loader: 'postcss-loader',
+                        loader: "postcss-loader",
+                        options: {
+                            "sourceMap": true
+                        }
+                    },
+                    {
+                        loader: "sass-loader",
                         options: {
                             "sourceMap": true
                         }
