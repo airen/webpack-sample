@@ -8,11 +8,14 @@
                         "> 1%",
                         "last 5 versions",
                         "ie >= 8"
-                    ]
-                }
+                    ],
+                    "node": "current"
+                },
+                "modules": "commonjs"
             }
         ],
-        "@babel/preset-react"
+        "@babel/preset-react",
+        "@babel/typescript"
     ],
     "plugins": [
         "@babel/plugin-transform-runtime",
