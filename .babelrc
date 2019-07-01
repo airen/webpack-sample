@@ -11,7 +11,7 @@
                     ],
                     "node": "current"
                 },
-                "modules": "commonjs"
+                "modules": false
             }
         ],
         "@babel/preset-react",
@@ -19,6 +19,18 @@
     ],
     "plugins": [
         "@babel/plugin-transform-runtime",
-        "@babel/plugin-transform-modules-commonjs"
+        "@babel/plugin-transform-modules-commonjs",
+        "@babel/plugin-transform-react-jsx-source",
+        [
+			"babel-plugin-react-css-modules",
+			{
+				"context": "./",
+				"generateScopedName": "[name]__[local]___[hash:base64:5]",
+				"autoResolveMultipleImports": true,
+				"webpackHotModuleReloading": true,
+				"exclude": "node_modules",
+				"handleMissingStyleName": "warn"
+			}
+		]
     ]
 }
