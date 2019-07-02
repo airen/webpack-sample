@@ -94,7 +94,7 @@ module.exports = {
 
             // images loader
             {
-                test: /\.(png|jp(e*g)|gif|svg|webp)$/,
+                test: /\.(png|jp(e*g)|gif|svg|webp)(\?.*)?$/,
                 use: [
                     {
                         loader: "url-loader",
@@ -106,8 +106,24 @@ module.exports = {
                         }
                     }
                 ]
+            },
+
+            // font loader
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 1024,                        // 小于10kb的字体编译成base64编码
+                            name: "fonts/[hash]-[name].[ext]", // Placeholder占位符
+                            publicPath: "assets",               // 最终生成的CSS代码中，字体URL前缀
+                            outputPath: "assets",               // 字体输出的实际路径（相对于/dist目录）
+                        }
+                    }
+                ]
             }
-            
+
         ]
     },
 

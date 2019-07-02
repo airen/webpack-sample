@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './app.scss';
+import './app.css';
 // import './app.scss';
 // const styles = require('./app.scss');
 // import * as Security from '../../../../assets/images/security.svg';
@@ -18,8 +18,13 @@ export default class App extends React.Component<any> {
                     {/* 下面这样引用，图片会报404错误 */}
                     {/* <img src="../../../../assets/images/security.svg" alt=""/> */}
                 </div>
-                <h1  className={styles.title}> Hello, Webpack + React + Typescript!(^_^)</h1>
-                <Button />
+                <h1  styleName="title"> Hello, Webpack + React + Typescript!(^_^)</h1>
+                <div>
+                    <span styleName="iconfont icon-fenxiang"></span>
+                    <Button />
+                    <span styleName="iconfont icon-guangbo"></span>
+                </div>
+                
             </div>
         )
     }
