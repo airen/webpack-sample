@@ -6,6 +6,7 @@ const commonConfig = require('./webpack.common.js');
 
 module.exports = merge(commonConfig, {
     mode: 'production', // 设置Webpack的mode模式
+    devtool: 'cheap-module-source-map',
 
     // 生产环境下需要的相关插件配置
     plugins: [

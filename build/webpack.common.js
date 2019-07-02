@@ -18,6 +18,7 @@ module.exports = {
     output: {
         path: DIST_PATH,        // 创建的bundle生成到哪里
         filename: '[name].bundle.js',    // 创建的bundle的名称
+        sourceMapFilename: '[name].js.map' // 创建的SourceMap的文件名
     },
 
     resolve: {
