@@ -8,7 +8,7 @@ export default class App extends React.Component<any> {
   render() {
     return (
       <div>
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <img src={String(Security)} />
           {/* 下面这样引用，图片会报404错误 */}
           {/* <img src="../../../../assets/images/security.svg" alt=""/> */}
