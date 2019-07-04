@@ -1,9 +1,9 @@
 .button {
+    border: 1px solid currentColor;
+    border-radius: 5px;
     background: #f23;
     padding: 5px 10px;
-    border: 1px solid currentColor;
     color: #fff;
-    border-radius: 5px;
 }
 
 .primary {
@@ -12,8 +12,8 @@
 }
 
 .btn-info {
+    box-shadow: 1px 1px 2px rgba(40, 90, 123, .5);
     color: #23f;
-    box-shadow: 1px 1px 2px rgba(40,90,123, .5);
 }
 
 .buttonSuccess {

@@ -4,8 +4,11 @@
   "description": "Learning webpack step by step.",
   "private": true,
   "scripts": {
+    "precommit": "lint-staged",
+    "eslint": "eslint --ext .js,.jsx,.tsx,.ts --fix ./src",
+    "stylelint": "stylelint './src/**/*.{css,scss}' --fix",
     "build": "webpack --config ./build/webpack.prod.js --mode production",
-    "dev": "webpack-dev-server --config ./build/webpack.dev.js --mode development --open",
+    "dev": "npm run eslint && npm run stylelint && webpack-dev-server --config ./build/webpack.dev.js --mode development --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -44,20 +47,39 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@types/react-css-modules": "^4.6.2",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
     "awesome-typescript-loader": "^5.2.1",
+    "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
     "css-modules-typescript-loader": "^2.0.4",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-jsx-control-statements": "^2.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.0.2",
     "node-sass": "^4.12.0",
     "postcss": "^7.0.17",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.6.0",
     "postcss-px-to-viewport": "^1.1.0",
+    "prettier": "^1.18.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-concentric-order": "^3.4.1",
+    "stylelint-config-css-modules": "^1.4.0",
+    "stylelint-config-prettier": "^5.2.0",
+    "stylelint-config-recommended": "^2.2.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-prettier": "^1.1.1",
     "typescript": "^3.5.2",
     "url-loader": "^2.0.1",
     "webpack": "^4.35.0",
@@ -75,6 +97,21 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "./src/**/*.{css,scss,less}": [
+      "stylelint --fix",
+      "git add"
     ]
   }
 }
