@@ -42,11 +42,11 @@ module.exports = {
     rules: [
       {
         test: /\.(j|t)sx?$/,
-        exclude: /node_modules/,
-        include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/, // 排除不处理的目录
+        include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'babel-loader?cacheDirectory',
           },
           {
             loader: 'awesome-typescript-loader',
@@ -63,8 +63,8 @@ module.exports = {
       // CSS Loader
       {
         test: /\.(sc|sa|c)ss$/,
-        exclude: /node_modules/,
-        include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/, // 排除不处理的目录
+        include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
         use: [
           {
             loader:
@@ -112,6 +112,8 @@ module.exports = {
       // images loader
       {
         test: /\.(png|jp(e*g)|gif|svg|webp)(\?.*)?$/,
+        exclude: /node_modules/, // 排除不处理的目录
+        include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
         use: [
           {
             loader: 'url-loader',
@@ -128,6 +130,8 @@ module.exports = {
       // font loader
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        exclude: /node_modules/, // 排除不处理的目录
+        include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
         use: [
           {
             loader: 'url-loader',
