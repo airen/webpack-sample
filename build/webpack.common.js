@@ -5,6 +5,7 @@ const DIST_PATH = path.resolve(__dirname, '../dist/'); // 声明/dist的路径
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   // 入口JS路径
@@ -17,15 +18,23 @@ module.exports = {
   // 告诉Webpack在哪里输出它所创建的bundle，以及如何命名这些文件
   output: {
     path: DIST_PATH, // 创建的bundle生成到哪里
-    filename: '[name].bundle.[hash].js', // 创建的bundle的名称
-    sourceMapFilename: '[name].js.map', // 创建的SourceMap的文件名
-    publicPath: '/', // 指定存放静态资源的CDN地址
+    // filename: 'js/[name].bundle.[hash].js', // 创建的bundle的名称
+    // sourceMapFilename: 'js/[name].js.map', // 创建的SourceMap的文件名
+    // publicPath: '/', // 指定存放静态资源的CDN地址
   },
 
   resolve: {
     // 配置之后可以不用在require或是import的时候加文件扩展名，会依次尝试添加扩展名进行匹配
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.scss'],
     modules: [path.resolve(__dirname, '../src'), path.resolve(__dirname, '../node_modules')],
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+      '@components': path.resolve(__dirname, '../src/components'),
+      '@pages': path.resolve(__dirname, '../src/pages'),
+      '@images': path.resolve(__dirname, '../src/assets/images'),
+      '@fonts': path.resolve(__dirname, '../src/assets/fonts'),
+      '@icons': path.resolve(__dirname, '../src/assets/icons'),
+    },
   },
 
   // 模块解析
@@ -58,7 +67,10 @@ module.exports = {
         include: path.resolve(__dirname, '../src'),
         use: [
           {
-            loader: 'style-loader',
+            loader:
+              process.env.NODE_ENV !== 'dev'
+                ? MiniCssExtractPlugin.loader
+                : ['css-hot-loader', 'style-loader'],
             options: {
               sourceMap: true,
             },
@@ -106,7 +118,7 @@ module.exports = {
             options: {
               limit: 1024, // 小于10kb的图片编译成base64编码，大于的单独打包成图片
               name: 'images/[hash]-[name].[ext]', // Placeholder占位符
-              publicPath: 'assets', // 最终生成的CSS代码中，图片URL前缀
+              publicPath: '/assets/', // 最终生成的CSS代码中，图片URL前缀
               outputPath: 'assets', // 图片输出的实际路径（相对于/dist目录）
             },
           },
@@ -122,7 +134,7 @@ module.exports = {
             options: {
               limit: 1024, // 小于10kb的字体编译成base64编码
               name: 'fonts/[hash]-[name].[ext]', // Placeholder占位符
-              publicPath: 'assets', // 最终生成的CSS代码中，字体URL前缀
+              publicPath: '/assets/', // 最终生成的CSS代码中，字体URL前缀
               outputPath: 'assets', // 字体输出的实际路径（相对于/dist目录）
             },
           },
@@ -144,6 +156,10 @@ module.exports = {
         collapseWhitespace: true, // 去掉多余空白
         removeAttributeQuotes: true, // 去掉一些属性的引号，例如id="moo" => id=moo
       },
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'css/[name]-[id].[contenthash].chunk.css',
     }),
   ],
 };

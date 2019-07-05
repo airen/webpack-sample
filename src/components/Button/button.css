@@ -8,7 +8,7 @@
 
 .primary {
     composes: button;
-    background: #f09;
+    background: #f90;
 }
 
 .btn-info {
@@ -17,5 +17,5 @@
 }
 
 .buttonSuccess {
-    color: #90f;
+    color: #9ff;
 }

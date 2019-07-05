@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './app.css';
-const Security = require('../../../../assets/images/security.svg');
+const Security = require('@images/security.svg');
 
-import Button from '../../../../components/Button/Button';
+import Button from '@components/Button/Button';
 
 export default class App extends React.Component<any> {
   render() {
@@ -14,6 +14,7 @@ export default class App extends React.Component<any> {
           {/* <img src="../../../../assets/images/security.svg" alt=""/> */}
         </div>
         <h1 styleName="title"> Hello, Webpack + React + Typescript!(^_^)</h1>
+        <p styleName="des">我是方的一只狼!!!!</p>
         <div>
           <span styleName="iconfont icon-fenxiang"></span>
           <Button />

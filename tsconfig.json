@@ -18,9 +18,17 @@
     "pretty": true,
     "jsx": "preserve",
     "allowJs": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "rootDir": "./src",
     "outDir": "./dist/",
+    "paths": {
+        "@/*": ["./src/*"],
+        "@components/*": ["./src/components/*"],
+        "@pages/*": ["./src/pages/*"],
+        "@images/*": ["./src/assets/images/*"],
+        "@fonts/*": ["./src/assets/fonts/*"],
+        "@icons/*": ["./src/assets/icons/*"],
+    }
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]
