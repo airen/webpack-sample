@@ -6,7 +6,7 @@ const commonConfig = require('./webpack.common.js');
 
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
-const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');;
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
 
 module.exports = merge(commonConfig, {
   mode: 'production', // 设置Webpack的mode模式
