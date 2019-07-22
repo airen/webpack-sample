@@ -2,9 +2,9 @@
 // Please do not change this file!
 interface CssExports {
   'btn-info': string;
-  'button': string;
-  'buttonSuccess': string;
-  'primary': string;
+  button: string;
+  buttonSuccess: string;
+  primary: string;
 }
-declare var cssExports: CssExports;
+declare let cssExports: CssExports;
 export = cssExports;
