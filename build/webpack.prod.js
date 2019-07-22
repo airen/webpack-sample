@@ -6,7 +6,9 @@ const commonConfig = require('./webpack.common.js');
 
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CSSSplitWebpackPlugin = require('css-split-webpack-plugin').default;
-const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');;
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin');
+
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 module.exports = merge(commonConfig, {
   mode: 'production', // 设置Webpack的mode模式
@@ -20,6 +22,21 @@ module.exports = merge(commonConfig, {
 
   optimization: {
     minimizer: [
+      new ParallelUglifyPlugin({
+        // 多进程压缩
+        uglifyJS: {
+          warnings: false,
+          output: {
+            comments: false,
+            beautify: false,
+          },
+          compress: {
+            drop_console: true,
+            collapse_vars: true,
+            reduce_vars: true,
+          },
+        },
+      }),
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
           map: {
