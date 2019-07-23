@@ -6,6 +6,7 @@ interface CssExports {
   'icon-fenxiang': string;
   'icon-guangbo': string;
   iconfont: string;
+  test__image: string;
   title: string;
 }
 declare let cssExports: CssExports;

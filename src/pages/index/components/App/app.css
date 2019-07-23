@@ -77,3 +77,10 @@ img {
 .icon-guangbo::before {
     content: "\e677";
 }
+
+.test__image {
+    background: url("~@images/test.png") no-repeat center;
+    background-size: cover;
+    width: 100vw;
+    height: 300px;
+}

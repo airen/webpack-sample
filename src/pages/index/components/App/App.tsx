@@ -20,6 +20,7 @@ export default class App extends React.Component<any> {
           <Button />
           <span styleName="iconfont icon-guangbo"></span>
         </div>
+        <div styleName="test__image"></div>
       </div>
     );
   }
