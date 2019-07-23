@@ -68,6 +68,8 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "file-loader": "^4.0.0",
+    "html-webpack-inline-code-plugin": "^1.0.1",
+    "html-webpack-inline-source-plugin": "^0.0.10",
     "html-webpack-plugin": "^3.2.0",
     "html-webpack-template": "^6.2.0",
     "husky": "^3.0.0",

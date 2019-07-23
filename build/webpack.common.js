@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackTemplate = require('html-webpack-template');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const Happypack = require('happypack');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
 module.exports = {
   // 入口JS路径
@@ -161,7 +161,9 @@ module.exports = {
         collapseWhitespace: true, // 去掉多余空白
         removeAttributeQuotes: true, // 去掉一些属性的引号，例如id="moo" => id=moo
       },
+      inlineSource: '.(js|css)$',
     }),
+    new HtmlWebpackInlineSourcePlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[name]-[id].[contenthash].chunk.css',
