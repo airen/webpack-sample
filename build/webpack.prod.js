@@ -38,12 +38,18 @@ module.exports = merge(commonConfig, {
         },
       }),
       new OptimizeCSSAssetsPlugin({
+        cssProcessor: require('cssnano'),
         cssProcessorOptions: {
+          discardComments: {
+            removeAll: true,
+          },
+          autoprefixer: false,
           map: {
             inline: false,
             annotation: true,
           },
         },
+        canPrint: true,
       }),
     ],
   },
