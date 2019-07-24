@@ -112,7 +112,7 @@ module.exports = {
 
       // images loader
       {
-        test: /\.(png|jp(e*g)|gif|svg|webp)(\?.*)?$/,
+        test: /\.(png|jp(e*g)|gif|webp)(\?.*)?$/,
         exclude: /node_modules/, // 排除不处理的目录
         include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
         use: [
@@ -165,6 +165,24 @@ module.exports = {
               name: 'fonts/[hash]-[name].[ext]', // Placeholder占位符
               publicPath: '/assets/', // 最终生成的CSS代码中，字体URL前缀
               outputPath: 'assets', // 字体输出的实际路径（相对于/dist目录）
+            },
+          },
+        ],
+      },
+      // svg loader
+      {
+        test: /\.svg/,
+        exclude: /node_modules/, // 排除不处理的目录
+        include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 1024, // 小于10kb的图片编译成base64编码，大于的单独打包成图片
+              name: 'images/[hash]-[name].[ext]', // Placeholder占位符
+              publicPath: '/assets/', // 最终生成的CSS代码中，图片URL前缀
+              outputPath: 'assets', // 图片输出的实际路径（相对于/dist目录）
+              noquotes: true,
             },
           },
         ],
