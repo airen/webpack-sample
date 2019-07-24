@@ -8,6 +8,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 
+const Dashboard = require('webpack-dashboard'); // 引入dashboard
+const DashboardPlugin = require('webpack-dashboard/plugin'); // 引入dashboard对应的插件
+const dashboard = new Dashboard(); // 创建一个dashboard的实例
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
   // 入口JS路径
   // 指示Webpack应该使用哪个模块，来作为构建其内部依赖图的开始
@@ -221,5 +227,7 @@ module.exports = {
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[name]-[id].[contenthash].chunk.css',
     }),
+    new DashboardPlugin(dashboard.setData),
+    new BundleAnalyzerPlugin(),
   ],
 };

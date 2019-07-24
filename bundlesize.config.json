@@ -1,0 +1,24 @@
+{
+    "files": [
+        {
+            "path": "./dist/assets/images/*.png",
+            "maxSize": "50 kB"
+        },
+        {
+            "path": "./dist/assets/images/*.jpg",
+            "maxSize": "50 kB"
+        },
+        {
+            "path": "./dist/css/*.css",
+            "maxSize": "20 kB"
+        },
+        {
+            "path": "./dist/js/*.js",
+            "maxSize": "20 kB"
+        },
+        {
+            "path": "./dist/vendors.*.js",
+            "maxSize": "35 kB"
+        }
+    ]
+}
