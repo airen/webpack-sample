@@ -6,8 +6,13 @@ import Button from '@components/Button/Button';
 
 export default class App extends React.Component<any> {
   render() {
+    const styles = {
+      '--backgroundColor': 'red',
+      backgroundColor: 'var(--backgroundColor)',
+    } as React.CSSProperties;
+
     return (
-      <div>
+      <div style={styles}>
         <div style={{ textAlign: 'center' }}>
           <img src={String(Security)} />
           {/* 下面这样引用，图片会报404错误 */}
