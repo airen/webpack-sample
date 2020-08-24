@@ -17,6 +17,8 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
     'prettier/react',
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended"
   ],
   settings: {
     react: {
@@ -53,6 +55,7 @@ module.exports = {
     '@typescript-eslint', 
     'jsx-control-statements', 
     'react', 
+    "jsx-a11y",
     'prettier'
   ],
   // 启用的规则及其各自的错误级别
