@@ -32,7 +32,7 @@ module.exports = {
 
   resolve: {
     // 配置之后可以不用在require或是import的时候加文件扩展名，会依次尝试添加扩展名进行匹配
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.scss'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.scss', '.svg'],
     modules: [path.resolve(__dirname, '../src'), path.resolve(__dirname, '../node_modules')],
     alias: {
       '@': path.resolve(__dirname, '../src'),
@@ -41,6 +41,7 @@ module.exports = {
       '@images': path.resolve(__dirname, '../src/assets/images'),
       '@fonts': path.resolve(__dirname, '../src/assets/fonts'),
       '@icons': path.resolve(__dirname, '../src/assets/icons'),
+      '@svgs': path.resolve(__dirname, '../src/assets/svgs'),
     },
   },
 
@@ -187,10 +188,12 @@ module.exports = {
         ],
       },
       // svg loader
+      // images目录下的.svg文件通过svg-url-loader来加载
+      // 用于运用在img的src属性和CSS中(比如background-image, mask-image, border-image等)
       {
         test: /\.svg/,
         exclude: /node_modules/, // 排除不处理的目录
-        include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
+        include: path.resolve(__dirname, '../src/assets/images'), // 精确指定要处理的目录
         use: [
           {
             loader: 'svg-url-loader',
@@ -201,6 +204,38 @@ module.exports = {
               outputPath: 'assets', // 图片输出的实际路径（相对于/dist目录）
               noquotes: true,
             },
+          },
+        ],
+      },
+      // SVGR Loader
+      // 将SVG文件当作React组件使用
+      // SVG内联的使用
+      {
+        test: /\.svg/,
+        exclude: /node_modules/, // 排除不处理的目录
+        include: path.resolve(__dirname, '../src/assets/svgs'), // 精确指定要处理的目录
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: '@svgr/webpack',
+            // options: {
+            //   template: (
+            //     { template },
+            //     opts,
+            //     { imports, componentName, props, jsx, exports }
+            //   ) => template.ast`
+            //     ${imports}
+
+            //     const ${componentName} = (${props}) => {
+            //       props = {...props, fill: '#ff3366' }
+            //       return ${jsx}
+            //     }
+
+            //     export default ${componentName}
+            //   `,
+            // },
           },
         ],
       },

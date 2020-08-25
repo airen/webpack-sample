@@ -28,8 +28,10 @@
         "@images/*": ["./src/assets/images/*"],
         "@fonts/*": ["./src/assets/fonts/*"],
         "@icons/*": ["./src/assets/icons/*"],
+        "@svgs/*": ["./src/assets/svgs/*"],
     }
   },
   "include": ["./src/**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "files": ["./typings/custom.d.ts"],
 }
