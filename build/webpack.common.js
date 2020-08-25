@@ -32,7 +32,7 @@ module.exports = {
 
   resolve: {
     // 配置之后可以不用在require或是import的时候加文件扩展名，会依次尝试添加扩展名进行匹配
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.scss'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.scss', '.svg'],
     modules: [path.resolve(__dirname, '../src'), path.resolve(__dirname, '../node_modules')],
     alias: {
       '@': path.resolve(__dirname, '../src'),
@@ -188,25 +188,33 @@ module.exports = {
       },
       // svg loader
       {
-        test: /\.svg/,
+        test: /\.svg$/,
         exclude: /node_modules/, // 排除不处理的目录
-        include: path.resolve(__dirname, '../src'), // 精确指定要处理的目录
+        include: path.resolve(__dirname, '../src/assets/images'), // 精确指定要处理的目录
         use: [
-          'babel-loader',
-          '@svgr/webpack',
-          // {
-          //   loader: 'svg-url-loader',
-          //   options: {
-          //     limit: 1024, // 小于10kb的图片编译成base64编码，大于的单独打包成图片
-          //     name: 'images/[hash]-[name].[ext]', // Placeholder占位符
-          //     publicPath: '/assets/', // 最终生成的CSS代码中，图片URL前缀
-          //     outputPath: 'assets', // 图片输出的实际路径（相对于/dist目录）
-          //     noquotes: true,
-          //   },
-          // },
-          // {
-          //   loader: '@svgr/webpack',
-          // },
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        exclude: /node_modules/, // 排除不处理的目录
+        include: path.resolve(__dirname, '../src/assets/svgs'), // 精确指定要处理的目录
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'react-svg-loader',
+            options: {
+              jsx: true,
+            },
+          },
         ],
       },
     ],

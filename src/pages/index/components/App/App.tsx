@@ -1,14 +1,13 @@
 import * as React from 'react';
 import './app.css';
-// const Security = require('@images/security.svg');
 
-// import Button from '@components/Button/Button';
-
-import SvgPressed from '@images/pressed.svg';
+import PressedUrl from '../../../../assets/images/pressed.svg';
+import SvgFood from '../../../../assets/svgs/food.svg';
 
 const App = (props: any) => (
-  <div {...props}>
-    <SvgPressed />
+  <div {...props} styleName="box">
+    <img src={PressedUrl} alt="Baby" />
+    <SvgFood />
   </div>
 );
 export default App;
